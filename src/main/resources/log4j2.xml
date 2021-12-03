@@ -3,11 +3,11 @@
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT" >
             <PatternLayout
-                    pattern="%d %highlight{ %logger{36}: %msg%n%throwable}{ERROR=red, WARN=blue, INFO=cyan}"/>
+                    pattern="%d %highlight{ %logger{36}: %msg%n%throwable}{ERROR=red, WARN=blue, INFO=cyan, DEBUG=green}"/>
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="info">
+        <Root level="debug">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
