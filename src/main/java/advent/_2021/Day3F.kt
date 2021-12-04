@@ -14,18 +14,13 @@ class Day3F : Day {
         var c0 = 0
         var c1 = 0
 
-        input.forEach {
-            (n until aantalKolommen).forEach { n ->  gammaResultaat[n] += Character.getNumericValue(it[n])}
-        }
-
-
         (n until aantalKolommen).forEach { n ->
             var a = 0
             input.forEach {
                 val bit = Character.getNumericValue(it[n])
                 a += bit
             }
-//            gammaResultaat += if (a > (input.size / 2)) 1 else 0
+            gammaResultaat += if (a > (input.size / 2)) 1 else 0
         }
 
         var epsilonResultaat = arrayListOf<Int>()
