@@ -6,7 +6,6 @@ import advent.util.Day
 @ADay(2021, 5, "day5")
 class Day5 : Day {
 
-
     override fun doPart1(input: List<String>): Any {
         val pairs = buildPairs(input)
 
@@ -14,7 +13,6 @@ class Day5 : Day {
 
         return countMap.values.filter { it >= 2 }.count()
     }
-
 
     override fun doPart2(input: List<String>): Any {
         val pairs = buildPairs(input)
