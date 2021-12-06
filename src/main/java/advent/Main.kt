@@ -4,7 +4,7 @@ import advent.util.Runner
 
 object Main {
 
-    private const val runAll = true
+    private const val runAll = false
     private const val year = 2021
 
     @JvmStatic
