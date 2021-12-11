@@ -25,6 +25,46 @@ class Day11 : Day {
         return step
     }
 
+    private fun simRecursive(data: MutableList<MutableList<Int>>): Int {
+        //step 1
+        val rows = data.size
+        val columns = data.first().size
+
+        val flashed = mutableSetOf<Pair<Int, Int>>()
+        (0 until columns).forEach { x ->
+            (0 until rows).forEach { y ->
+                doFlash(data, y, x, flashed)
+            }
+        }
+        return flashed.count()
+    }
+
+    private fun doFlash(
+        data: MutableList<MutableList<Int>>,
+        y: Int,
+        x: Int,
+        flashed: MutableSet<Pair<Int, Int>>,
+    ) {
+        var level = data.getOrNull(y)?.getOrNull(x) ?: return
+        if (flashed.contains(y to x)) return
+
+        level++
+        data[y][x] = level
+        if (level > 9) {
+            flashed += y to x
+            data[y][x] = 0
+            doFlash(data, y + 1, x - 1, flashed)
+            doFlash(data, y + 1, x, flashed)
+            doFlash(data, y + 1, x + 1, flashed)
+            doFlash(data, y, x - 1, flashed)
+            doFlash(data, y, x + 1, flashed)
+            doFlash(data, y - 1, x - 1, flashed)
+            doFlash(data, y - 1, x, flashed)
+            doFlash(data, y - 1, x + 1, flashed)
+        }
+    }
+
+
     private fun sim(data: MutableList<MutableList<Int>>): Int {
         //step 1
         val rows = data.size
