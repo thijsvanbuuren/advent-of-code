@@ -49,7 +49,7 @@ class Day10 : Day {
 
             fixLine(it).map { closers.indexOf(it) + 1L }.reduce { a, b ->
                 val total: Long = a * 5L + b
-                logger.debug(" $a * 5 + $b = $total")
+//                logger.debug(" $a * 5 + $b = $total")
                 total
             }
         }.sorted().let { it[it.size / 2] }
@@ -65,7 +65,7 @@ class Day10 : Day {
             }
         }
         val result = stack.toList().reversed().map { closers[openers.indexOf(it)] }
-        logger.debug("Missing for :\n$line\nAre $result")
+//        logger.debug("Missing for :\n$line\nAre $result")
         return result
     }
 }
