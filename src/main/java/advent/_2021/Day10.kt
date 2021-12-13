@@ -7,7 +7,6 @@ import java.util.*
 
 @ADay(2021, 10, "day10")
 class Day10 : Day {
-    val logger = LoggerFactory.getLogger("Day 10")
 
     val openers = listOf('(', '[', '{', '<')
     val closers = listOf(')', ']', '}', '>')

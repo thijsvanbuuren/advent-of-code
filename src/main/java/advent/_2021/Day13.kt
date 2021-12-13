@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory
 @ADay(2021, 13, "day13")
 class Day13 : Day {
 
-    val logger = LoggerFactory.getLogger("Day 13")
-
     val data = "\u2588"
 
     override fun doPart1(input: List<String>): Any {

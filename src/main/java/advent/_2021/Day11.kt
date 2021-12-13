@@ -7,8 +7,6 @@ import org.slf4j.LoggerFactory
 @ADay(2021, 11, "day11")
 class Day11 : Day {
 
-    val logger = LoggerFactory.getLogger("Day 11")
-
     override fun doPart1(input: List<String>): Any {
         val data = input.map { it.map { Character.getNumericValue(it) }.toMutableList() }.toMutableList()
 

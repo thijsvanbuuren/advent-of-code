@@ -7,8 +7,6 @@ import org.slf4j.LoggerFactory
 @ADay(2021, 2, "day2F")
 class Day2F : Day {
 
-    val logger = LoggerFactory.getLogger("FLEUR MEUK")
-
     override fun doPart1(input: List<String>): Any {
         val x = input.filter { it.startsWith("forward") }
             .sumOf { Character.getNumericValue(it.last()) }

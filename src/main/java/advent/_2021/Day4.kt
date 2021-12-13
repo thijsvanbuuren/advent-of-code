@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory
 @ADay(2021, 4, "day4")
 class Day4 : Day {
 
-    val logger = LoggerFactory.getLogger("Day4")
-
     override fun doPart1(input: List<String>): Any {
         val iterator = input.iterator()
 

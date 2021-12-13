@@ -54,8 +54,6 @@ data class Cave(val key: String, val maxCount: Int = 1) {
 @ADay(2021, 12, "day12")
 class Day12 : Day {
 
-    val logger = LoggerFactory.getLogger("Day 12")
-
     override fun doPart1(input: List<String>): Any {
         val caves = buildCaves(input, 1)
         val start = caves["start"] ?: return -1
