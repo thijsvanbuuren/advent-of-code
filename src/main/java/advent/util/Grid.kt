@@ -2,20 +2,10 @@ package advent.util
 
 import kotlin.math.max
 
-class Grid<T>(val default: T) : HashMap<Point, T>() {
+class Grid<T>(private val default: T) : HashMap<Point, T>() {
 
     private var highestX = 0
     private var highestY = 0
-
-    override fun put(key: Point, value: T): T? {
-        highestX = max(highestX, key.x)
-        highestY = max(highestY, key.y)
-        return super.put(key, value)
-    }
-
-    fun get(x: Int, y: Int) = get(Point(x, y))
-    fun getOrDefault(x: Int, y: Int) = getOrDefault(Point(x, y))
-    fun getOrDefault(key: Point): T = getOrDefault(key, default)
 
     fun foldUp(foldY: Int, combine: (a: T?, b: T?) -> T?) {
         (0 until foldY).forEach { y ->
@@ -42,12 +32,23 @@ class Grid<T>(val default: T) : HashMap<Point, T>() {
                     null -> remove(pointA)
                     else -> this[pointA] = result
                 }
-
             }
         }
         this.keys.filter { it.x >= foldX }.forEach { remove(it) }
         highestX = foldX - 1
     }
+
+
+    fun get(x: Int, y: Int) = get(Point(x, y))
+    fun getOrDefault(x: Int, y: Int) = getOrDefault(Point(x, y))
+    fun getOrDefault(key: Point): T = getOrDefault(key, default)
+
+    override fun put(key: Point, value: T): T? {
+        highestX = max(highestX, key.x)
+        highestY = max(highestY, key.y)
+        return super.put(key, value)
+    }
+
 
     override fun toString(): String {
         var output = "\n"
@@ -63,7 +64,6 @@ data class Point(val x: Int, val y: Int) {
     operator fun minus(point: Point) = Point(this.x - point.x, this.y - point.y)
     operator fun times(point: Point) = Point(this.x * point.x, this.y * point.y)
     operator fun div(point: Point) = Point(this.x / point.x, this.y / point.y)
-//    infix operator add(point: Point) = Point(this.x + point.x)
 }
 
 fun String.toPoint(seperator: String = ",") = this.split(seperator).let { Point(it[0].toInt(), it[1].toInt()) }
