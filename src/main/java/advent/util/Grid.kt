@@ -1,8 +1,19 @@
 package advent.util
 
+import org.slf4j.LoggerFactory
+import java.util.*
 import kotlin.math.max
 
 class Grid<T>(private val default: T) : HashMap<Point, T>() {
+
+    val logger = LoggerFactory.getLogger(this.javaClass)
+
+    companion object {
+        val right = Point(1, 0)
+        val left = Point(-1, 0)
+        val up = Point(0, -1)
+        val down = Point(0, 1)
+    }
 
     private var highestX = 0
     private var highestY = 0
@@ -38,10 +49,39 @@ class Grid<T>(private val default: T) : HashMap<Point, T>() {
         highestX = foldX - 1
     }
 
+    fun findPath(start: Point, end: Point, directions: List<Point>, mapToLong: (T) -> Int): Int? {
+        val visited = mutableSetOf<Point>()
+
+        // point -> cost to get there
+        val todo = PriorityQueue<Pair<Point, Int>> { a, b -> a.second - b.second }
+
+        todo.add(start to 0)
+        while (todo.isNotEmpty()) {
+            val (start, cost) = todo.poll()
+
+            if (start == end) {
+                return cost
+            }
+
+            if (start in visited) continue
+            visited += start
+
+            directions
+                .map { it + start }
+                .filter { it in this }
+                .filter { it !in visited }
+                .forEach { todo.add(it to (cost + mapToLong(getOrDefault(it)))) }
+
+        }
+        return -1
+    }
+
 
     fun get(x: Int, y: Int) = get(Point(x, y))
     fun getOrDefault(x: Int, y: Int) = getOrDefault(Point(x, y))
     fun getOrDefault(key: Point): T = getOrDefault(key, default)
+
+    fun max() = Point(highestX, highestY)
 
     override fun put(key: Point, value: T): T? {
         highestX = max(highestX, key.x)
@@ -49,6 +89,7 @@ class Grid<T>(private val default: T) : HashMap<Point, T>() {
         return super.put(key, value)
     }
 
+    fun contains(p: Point) = p.x in 0..highestX && p.y in 0..highestY
 
     override fun toString(): String {
         var output = "\n"

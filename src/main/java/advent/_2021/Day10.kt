@@ -32,7 +32,7 @@ class Day10 : Day {
             } else {
                 val shouldBe = closers[openers.indexOf(stack.pop())]
                 if (it != shouldBe) {
-                    logger.debug("Error:\n$line\nExpected $shouldBe is $it")
+//                    logger.debug("Error:\n$line\nExpected $shouldBe is $it")
                     return it
                 }
             }

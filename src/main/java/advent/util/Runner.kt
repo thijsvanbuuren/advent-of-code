@@ -22,15 +22,20 @@ object Runner {
             .forEach { runYear(it) }
     }
 
-    fun runYear(year: Int) {
+    fun runYear(year: Int, dayNr: Int = -1) {
         val yearData = adventsMap[year] ?: return
 
         logger.error("-------------------------------------------------------------")
         logger.warn("Starting YEAR: $year")
 
-        yearData.entries
+        val days = yearData.entries
             .sortedBy { it.key.day }
-            .forEach { (aDay, day) -> runDay(year, aDay, day) }
+
+        if (dayNr == -1) {
+            days.forEach { (aDay, day) -> runDay(year, aDay, day) }
+        } else {
+            days.find { (aDay, day) -> aDay.day == dayNr }!!.let { (aDay, day) -> runDay(year, aDay, day ) }
+        }
 
         logger.warn("Ending Year: $year")
     }
