@@ -6,7 +6,7 @@ object Main {
 
     private const val runAll = false
     private const val year = 2021
-    private const val day = 18
+    private const val day = 19
 
     @JvmStatic
     fun main(args: Array<String>) {
