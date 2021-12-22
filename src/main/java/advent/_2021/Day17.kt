@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory
 import kotlin.math.absoluteValue
 
 @ADay(2021, 17, "day17")
-class Day0 : Day {
+class Day17 : Day(false) {
     override fun doPart1(input: List<String>): Any {
 //        val xTarget = 20..30
 //        val yTarget = -10..-5
@@ -35,7 +35,7 @@ class Day0 : Day {
             if (v in xTarget) {
                 if (xVRangeMin > n) xVRangeMin = n
                 if (xVRangeMax < n) xVRangeMax = n
-                logger.debug("$n -> $v")
+                log("$n -> $v")
             }
             n++
         }

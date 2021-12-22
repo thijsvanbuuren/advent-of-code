@@ -6,7 +6,7 @@ import advent.util.Day
 data class Asteroid(val x: Int, val y: Int)
 
 @ADay(2019, 10, "day10")
-class Day10 : Day {
+class Day10 : Day() {
 
 
     override fun doPart1(data: List<String>): Any {

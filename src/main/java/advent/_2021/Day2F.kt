@@ -5,7 +5,7 @@ import advent.util.Day
 import org.slf4j.LoggerFactory
 
 @ADay(2021, 2, "day2F")
-class Day2F : Day {
+class Day2F : Day() {
 
     override fun doPart1(input: List<String>): Any {
         val x = input.filter { it.startsWith("forward") }
@@ -17,7 +17,7 @@ class Day2F : Day {
         val b = input.filter { it.startsWith("up") }
             .sumOf { Character.getNumericValue(it.last()) }
 
-        logger.debug(" X: $x   A: $a   B: $b")
+        log(" X: $x   A: $a   B: $b")
 
         return x * (a - b)
     }

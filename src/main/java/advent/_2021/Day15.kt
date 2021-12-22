@@ -6,7 +6,7 @@ import advent.util.Grid
 import advent.util.Point
 
 @ADay(2021, 15, "day15")
-class Day15 : Day {
+class Day15 : Day() {
     override fun doPart1(input: List<String>): Any {
         val grid = Grid(0)
 

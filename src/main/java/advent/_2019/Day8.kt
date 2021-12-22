@@ -80,7 +80,7 @@ class Image(val width: Int, val height: Int) {
 }
 
 @ADay(2019, 8, "day8")
-class Day8 : Day {
+class Day8 : Day() {
 
     override fun doPart1(data: List<String>): Any {
         val image = Image(25, 6)

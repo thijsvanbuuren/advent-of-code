@@ -5,7 +5,7 @@ import advent.util.Day
 import java.math.BigInteger
 
 @ADay(2019, 1, "day1")
-class Day1 : Day {
+class Day1 : Day() {
     private val divider = BigInteger.valueOf(3)
 
     override fun doPart1(input: List<String>): Any {

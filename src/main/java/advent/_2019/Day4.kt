@@ -4,7 +4,7 @@ import advent.util.ADay
 import advent.util.Day
 
 @ADay(2019, 4, "day4")
-class Day4 : Day {
+class Day4 : Day() {
 
     override fun doPart1(input: List<String>): Any {
         val data = input[0].split('-')

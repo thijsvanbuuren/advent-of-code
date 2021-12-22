@@ -6,7 +6,7 @@ import advent.util.Day
 import org.slf4j.LoggerFactory
 
 @ADay(2021, 4, "day4")
-class Day4 : Day {
+class Day4 : Day() {
 
     override fun doPart1(input: List<String>): Any {
         val iterator = input.iterator()

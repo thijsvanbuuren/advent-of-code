@@ -5,7 +5,7 @@ import advent.util.Day
 import org.slf4j.LoggerFactory
 
 @ADay(2021, 3, "day3")
-class Day3 : Day {
+class Day3 : Day() {
 
     override fun doPart1(input: List<String>): Any {
         val halfSize = input.size / 2
@@ -21,9 +21,9 @@ class Day3 : Day {
         val epsilonStr = epsilon.joinToString("")
         val epsilonInt = epsilonStr.toInt(2)
 
-        logger.debug(" COUNTS: $countsSTr ")
-        logger.debug(" GAMMA: $gammaStr -> $gammaInt")
-        logger.debug(" EPSILON: $epsilonStr -> $epsilonInt ")
+        log(" COUNTS: $countsSTr ")
+        log(" GAMMA: $gammaStr -> $gammaInt")
+        log(" EPSILON: $epsilonStr -> $epsilonInt ")
 
         return gammaInt * epsilonInt
     }
@@ -34,8 +34,8 @@ class Day3 : Day {
         val oxy = findValue(data, true)
         val co2 = findValue(data, false)
 
-        logger.debug(" OXY: $oxy")
-        logger.debug(" CO2: $co2")
+        log(" OXY: $oxy")
+        log(" CO2: $co2")
 
         return oxy * co2
     }

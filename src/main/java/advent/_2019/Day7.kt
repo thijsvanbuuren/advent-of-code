@@ -6,7 +6,7 @@ import advent._2019.models.Util.createPossibilities
 import advent._2019.opcode.OpcodeV2
 
 @ADay(2019, 7, "day7")
-class Day7 : Day {
+class Day7 : Day() {
 
     override fun doPart1(data: List<String>): Any {
         val program = parseInput(data)

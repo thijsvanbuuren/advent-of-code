@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory
 import java.util.*
 
 @ADay(2021, 10, "day10")
-class Day10 : Day {
+class Day10 : Day() {
 
     val openers = listOf('(', '[', '{', '<')
     val closers = listOf(')', ']', '}', '>')

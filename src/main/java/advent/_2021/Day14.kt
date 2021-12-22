@@ -5,7 +5,7 @@ import advent.util.Day
 import java.util.*
 
 @ADay(2021, 14, "day14")
-class Day14 : Day {
+class Day14 : Day() {
     val maxDepth = 40
     val maxDepthP1 = 10
 
@@ -23,7 +23,7 @@ class Day14 : Day {
         result.forEach { countMap[it] = countMap.getOrDefault(it, 0) + 1 }
         val highest = countMap.maxByOrNull { it.value.toLong() } ?: return -1
         val lowest = countMap.minByOrNull { it.value.toLong() } ?: return -1
-        logger.debug("high: $highest low: $lowest")
+        log("high: $highest low: $lowest")
         return highest.value - lowest.value
     }
 
@@ -61,23 +61,11 @@ class Day14 : Day {
 
         val stringMap = rules.map { it.first to (it.first[0] + it.second + it.first[1]) }.toMap()
 
-        var d = 7
-        repeat(15) {
-            d *= 2
-        }
-        logger.debug("TIME IT TAKES: ${d / 60 / 60 / 24}")
-        //cnbc
-        //canabac
-
-        //cnbc
-        //cn  -> chn
-        //check left ch
-
         var result = template.first().toString()
 
         var v1 = false
         var resultMap = mapOf<Char, Long>()
-            val calculated = mutableMapOf<Pair<String, Int>, Map<Char, Long>>()
+        val calculated = mutableMapOf<Pair<String, Int>, Map<Char, Long>>()
         if (v1) {
             val countMap = mutableMapOf<Char, Long>()
             resultMap = countProcessPart2(template, stringMap, maxDepth, countMap)
@@ -91,12 +79,9 @@ class Day14 : Day {
                 }
         }
 
-//        logger.debug(result)
-
-
         val highest = resultMap.maxByOrNull { it.value } ?: return -1
         val lowest = resultMap.minByOrNull { it.value } ?: return -1
-        logger.debug("high: $highest low: $lowest")
+        log("high: $highest low: $lowest")
         return highest.value - lowest.value
     }
 

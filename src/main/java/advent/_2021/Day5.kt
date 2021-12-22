@@ -4,7 +4,7 @@ import advent.util.ADay
 import advent.util.Day
 
 @ADay(2021, 5, "day5")
-class Day5 : Day {
+class Day5 : Day() {
 
     override fun doPart1(input: List<String>): Any {
         val pairs = buildPairs(input)

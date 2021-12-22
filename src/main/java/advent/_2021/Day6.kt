@@ -5,7 +5,7 @@ import advent.util.Day
 import java.util.*
 
 @ADay(2021, 6, "day6")
-class Day6 : Day {
+class Day6 : Day() {
 
     override fun doPart1(input: List<String>): Any {
         val initialFishCount = buildInitialFishCount(input)

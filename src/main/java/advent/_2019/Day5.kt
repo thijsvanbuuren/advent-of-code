@@ -5,7 +5,7 @@ import advent.util.Day
 import advent._2019.opcode.OpcodeV2
 
 @ADay(2019, 5, "day5")
-class Day5 : Day {
+class Day5 : Day() {
 
     override fun doPart1(input: List<String>): Any {
         val data = parseInput(input)

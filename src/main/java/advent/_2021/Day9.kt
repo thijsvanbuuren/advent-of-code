@@ -4,7 +4,7 @@ import advent.util.ADay
 import advent.util.Day
 
 @ADay(2021, 9, "day9")
-class Day9 : Day {
+class Day9 : Day() {
     override fun doPart1(input: List<String>): Any {
         // y, x
         val data = input.map { it.map { Character.getNumericValue(it) } }

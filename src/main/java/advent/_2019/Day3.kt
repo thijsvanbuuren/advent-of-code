@@ -19,7 +19,7 @@ data class Section(
     val direction: Direction = Direction.RIGHT
 )
 @ADay(2019, 3, "day3")
-class Day3 : Day {
+class Day3 : Day() {
 
     override fun doPart1(input: List<String>): Any {
         val paths = mapInput(input)

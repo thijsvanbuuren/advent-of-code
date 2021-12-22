@@ -4,7 +4,7 @@ import advent.util.ADay
 import advent.util.Day
 
 @ADay(2021, 3, "day3F")
-class Day3F : Day {
+class Day3F : Day() {
     override fun doPart1(input: List<String>): Any {
 
         var n = 0 // column index

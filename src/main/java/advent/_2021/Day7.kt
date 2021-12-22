@@ -5,7 +5,7 @@ import advent.util.Day
 import org.slf4j.LoggerFactory
 
 @ADay(2021, 7, "day7")
-class Day7 : Day {
+class Day7 : Day() {
 
     override fun doPart1(input: List<String>): Any {
         val data = input.first().split(",").map { it.toInt() }
@@ -49,7 +49,7 @@ class Day7 : Day {
             }
         }
 
-        logger.debug(" nr: ${nr}")
+        log(" nr: ${nr}")
         return fuel
     }
 }

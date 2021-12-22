@@ -4,7 +4,7 @@ import advent.util.*
 import java.lang.Integer.max
 
 @ADay(2021, 19, "day19")
-class Day19 : Day {
+class Day19 : Day() {
     val orientations = 24
 
     override fun doPart1(input: List<String>): Any {
@@ -21,7 +21,7 @@ class Day19 : Day {
         while (scannersExpanded.isNotEmpty()) {
             scannersExpanded.toSet().forEach { scannerOrientations ->
                 val s = findMatchingOrientation(scannerOrientations, grid, needMatches)
-                logger.debug("matches? -> ${s != null}")
+                log("matches? -> ${s != null}")
                 if (s != null) {
                     scannersExpanded.removeAt(scannersExpanded.indexOfFirst { it === s })
                 }
@@ -45,7 +45,7 @@ class Day19 : Day {
         while (scannersExpanded.isNotEmpty()) {
             scannersExpanded.toSet().forEach { scannerOrientations ->
                 val s = findMatchingOrientation(scannerOrientations, grid, needMatches)
-                logger.debug("matches? -> ${s != null}")
+                log("matches? -> ${s != null}")
                 if (s != null) {
                     scannersExpanded.removeAt(scannersExpanded.indexOfFirst { it === s })
                 }
@@ -103,7 +103,7 @@ class Day19 : Day {
                     val diff = gridPoint - p
                     val translated = scanner.map { it + diff }
                     val count = translated.filter { grid[it] != null }.count()
-//                    logger.debug("$count -> $translated")
+//                    log("$count -> $translated")
                     if (count >= needMatches) {
                         grid[diff] = 'S'
                         translated.forEach { grid[it] = 'B' }

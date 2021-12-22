@@ -141,28 +141,29 @@ data class SNumber(var iniLeft: Any, var iniRight: Any) {
     //        IS [[[[7,7],[7,7]],[[7,7],[0,7]]],[[[7,7],[6,7]],[[9,5],[8,0]]]]
 }
 
+// TODO does not work yet somehow
 @ADay(2021, 18, "day18")
-class Day18 : Day {
+class Day18 : Day(false) {
 
     override fun doPart1(input: List<String>): Any {
         var tree = parse(input.first().iterator(), false) as SNumber
-        logger.debug(tree.toString())
+        log(tree.toString())
         input.asSequence().drop(1).forEach {
             val addTree: SNumber = parse(it.iterator(), false) as SNumber
             tree += addTree
-            logger.debug("added: $tree")
+            log("added: $tree")
             while (true) {
                 if (tree.explode()) {
-                    logger.debug("explo: $tree")
+                    log("explo: $tree")
                     continue
                 }
                 if (tree.split()) {
-                    logger.debug("split: $tree")
+                    log("split: $tree")
                     continue
                 }
                 break
             }
-            logger.debug("compl: $tree")
+            log("compl: $tree")
         }
         return tree.magnitude()
     }

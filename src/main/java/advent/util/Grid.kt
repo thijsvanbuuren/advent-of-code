@@ -1,10 +1,11 @@
 package advent.util
 
 import org.slf4j.LoggerFactory
+import java.lang.Integer.min
 import java.util.*
 import kotlin.math.max
 
-class Grid<T>(private val default: T) : HashMap<Point, T>() {
+class Grid<T>(var default: T) : HashMap<Point, T>() {
 
     val logger = LoggerFactory.getLogger(this.javaClass)
 
@@ -15,8 +16,10 @@ class Grid<T>(private val default: T) : HashMap<Point, T>() {
         val down = Point(0, 1)
     }
 
-    private var highestX = 0
-    private var highestY = 0
+    var highestX = 0
+    var lowestX = 0
+    var highestY = 0
+    var lowestY = 0
 
     fun foldUp(foldY: Int, combine: (a: T?, b: T?) -> T?) {
         (0 until foldY).forEach { y ->
@@ -85,7 +88,9 @@ class Grid<T>(private val default: T) : HashMap<Point, T>() {
 
     override fun put(key: Point, value: T): T? {
         highestX = max(highestX, key.x)
+        lowestX = min(lowestX, key.x)
         highestY = max(highestY, key.y)
+        lowestY = min(lowestY, key.x)
         return super.put(key, value)
     }
 
@@ -93,8 +98,8 @@ class Grid<T>(private val default: T) : HashMap<Point, T>() {
 
     override fun toString(): String {
         var output = "\n"
-        (0..highestY).forEach { y ->
-            output += (0..highestX).map { x -> getOrDefault(x, y) }.joinToString("") + "\n"
+        (lowestY..highestY).forEach { y ->
+            output += (lowestX..highestX).map { x -> getOrDefault(x, y) }.joinToString("") + "\n"
         }
         return output
     }

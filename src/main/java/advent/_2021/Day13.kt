@@ -7,7 +7,7 @@ import advent.util.toPoint
 import org.slf4j.LoggerFactory
 
 @ADay(2021, 13, "day13")
-class Day13 : Day {
+class Day13 : Day(false) {
 
     val data = "\u2588"
 
@@ -20,7 +20,7 @@ class Day13 : Day {
             doCommand(it, grid)
         }
 
-//        logger.debug(grid.toString())
+        log(grid.toString())
         return grid.size
     }
 
@@ -43,7 +43,7 @@ class Day13 : Day {
             doCommand(it, grid)
         }
 
-        logger.debug(grid.toString())
+        log(grid.toString())
         return grid.size
     }
 

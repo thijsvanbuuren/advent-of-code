@@ -97,7 +97,7 @@ class Packet(input: String) {
 }
 
 @ADay(2021, 16, "day16")
-class Day16 : Day {
+class Day16 : Day() {
     override fun doPart1(input: List<String>): Any {
         return input.first().hexToBinary(4).let { Packet(it) }.sumVersions()
     }

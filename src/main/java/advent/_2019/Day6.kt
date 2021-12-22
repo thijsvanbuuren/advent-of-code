@@ -52,7 +52,7 @@ class Map {
 }
 
 @ADay(2019, 6, "day6")
-class Day6 : Day {
+class Day6 : Day() {
 
     private val CENTER = "COM"
 

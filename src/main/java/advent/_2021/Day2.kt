@@ -4,7 +4,7 @@ import advent.util.ADay
 import advent.util.Day
 
 @ADay(2021, 2, "day2")
-class Day2 : Day {
+class Day2 : Day() {
     override fun doPart1(input: List<String>): Any {
         val sub = Submarine()
 

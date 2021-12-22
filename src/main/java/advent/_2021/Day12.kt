@@ -52,7 +52,7 @@ data class Cave(val key: String, val maxCount: Int = 1) {
 }
 
 @ADay(2021, 12, "day12")
-class Day12 : Day {
+class Day12 : Day() {
 
     override fun doPart1(input: List<String>): Any {
         val caves = buildCaves(input, 1)

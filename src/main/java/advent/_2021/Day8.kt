@@ -9,7 +9,7 @@ class ExactCompareList<T>(list: List<T>) : ArrayList<T>(list) {
 }
 
 @ADay(2021, 8, "day8")
-class Day8 : Day {
+class Day8 : Day() {
 
     companion object {
         val logger = LoggerFactory.getLogger("Day 8")

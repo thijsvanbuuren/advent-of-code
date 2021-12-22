@@ -12,6 +12,8 @@ object Runner {
 
     private val adventsMap = mutableMapOf<Int, MutableMap<ADay, Day>>()
 
+    val columnSizes = listOf(20, 20, 20)
+
     init {
         buildMap()
     }
@@ -26,7 +28,7 @@ object Runner {
         val yearData = adventsMap[year] ?: return
 
         logger.error("-------------------------------------------------------------")
-        logger.warn("Starting YEAR: $year")
+        logger.error(toColumns(" Year: $year", "Part 1", "Part 2"))
 
         val days = yearData.entries
             .sortedBy { it.key.day }
@@ -34,26 +36,33 @@ object Runner {
         if (dayNr == -1) {
             days.forEach { (aDay, day) -> runDay(year, aDay, day) }
         } else {
-            days.find { (aDay, day) -> aDay.day == dayNr }!!.let { (aDay, day) -> runDay(year, aDay, day ) }
+            days.find { (aDay, day) -> aDay.day == dayNr }!!.let { (aDay, day) -> runDay(year, aDay, day) }
         }
 
-        logger.warn("Ending Year: $year")
     }
 
     private fun runDay(year: Int, aDay: ADay, day: Day) {
         val url = javaClass.classLoader.getResource("$year/${aDay.fileKey}.txt")
         val input = File(url.toURI()).readLines()
 
-        logger.warn(" - Day ${aDay.day} with file: ${aDay.fileKey} ")
-        runPart(1) { day.doPart1(input) }
-        runPart(2) { day.doPart2(input) }
+        val p1 = runPart(1) { day.doPart1(input) }
+        val p2 = runPart(2) { day.doPart2(input) }
+        val output = toColumns(
+            "- Day ${aDay.day} (${aDay.fileKey})",
+            "${p1.first} (${p1.second})",
+            "${p2.first} (${p2.second})"
+        )
+        if (p1.first == -1 || p2.first == -1) {
+            logger.error(output)
+        } else logger.info(output)
     }
 
-    private fun runPart(part: Int, block: () -> Any) {
+    private fun runPart(part: Int, block: () -> Any): Pair<Any, Long> {
         var result: Any?
-        measureTimeMillis {
+        val time = measureTimeMillis {
             result = block()
-        }.also { logger.info("   - Part $part : $result, with time $it") }
+        }
+        return result!! to time
     }
 
     private fun buildMap() {
@@ -70,4 +79,9 @@ object Runner {
                 yearMap[meta] = day
             }
     }
+
+    fun toColumns(c1: String, c2: String, c3: String): String = " | " +
+            c1.padEnd(columnSizes[0]) + " | " +
+            c2.padEnd(columnSizes[1]) + " | " +
+            c3.padEnd(columnSizes[2]) + " | "
 }
